@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/insertExample?rewriteBatchedStatements=true&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=999999
+    username:
+    password:
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true # 깔끔한 형태로 나오도록 함
+        ## bulk insert 옵션 ##
+        # 정렬 옵션
+        order_inserts: true
+        order_updates: true
+        # 한번에 나가는 배치 개수 -> 100000개의 insert를 1개로 보낸다.
+        jdbc:
+          batch_size: 100000
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+#    open-in-view: false
+    generate-ddl: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace # ? 에 들어가는 값을 알도록 함.
+
+server:
+  port: 9090
