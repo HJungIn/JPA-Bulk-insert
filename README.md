@@ -129,3 +129,14 @@ public class PostBulkRepository {
 |속도|save()|saveAll()|jpql|jdbc(bulk insert)|
 |---|---|---|---|---|
 |10만 건|835s|21s|22s|1s|
+
+* JPA의 Identity로 Batch INSERT 가 안되는 이유
+  * Identity는 ID를 자동할당하는데 (실제 DB에)insert를 실행하기 전까지는 ID에 할당된 값을 알 수 없기 때문에 (JPA의 쓰기지연 특성)
+  * Batch insert는 Id 값을 알아야 함.
+  
+
+##### 참조
+* https://velog.io/@joonghyun/Spring-JPA-Save-vs-SaveAll-vs-Bulk-Insert
+* https://velog.io/@hyunho058/JdbcTemplate-batchUpdate%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-Bulk-Insert
+* https://medium.com/@hee98.09.14/jpa-id%EC%A0%84%EB%9E%B5%EC%9D%B4-identity%EC%9D%B8-%EC%83%81%ED%83%9C%EC%97%90%EC%84%9C-bulk-insert-%EC%88%98%ED%96%89%ED%95%98%EA%B8%B0-8bf9c760bd82
+* https://backtony.tistory.com/45
